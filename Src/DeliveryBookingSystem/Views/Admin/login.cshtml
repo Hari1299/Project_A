@@ -1,4 +1,4 @@
-﻿
+﻿@model DeliveryBookingSystem.Models.User
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -15,30 +15,31 @@
     <h4>Admin Login</h4>
     <br />
     <style>
-        body{
-            background-color:bisque;
+        body {
+            background-color: bisque;
         }
     </style>
     <div class="row">
         <div class="col-md-4">
-            <form action="Login" method="post">
-                <table>
-                        <td>
-                            <label>UserName</label>
-                        </td>
-                        <td>
-                            <input type="text" name="UserName" value="" />
-                        </td>
-                    <br/>
-                    <br/>
-                    <br/>
-                        <td>
-                            <label>Password</label>
-                        </td>
-                        <td>
-                            <input type="password" name="Password" value="" />
-                        </td>
-                  @*<td>
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<div class="form-group">
+                        <label asp-for="CustomerName" class="control-label"></label>
+                        <input asp-for="CustomerName" class="form-control" />
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    @*<input asp-for="Password" class="form-control" />*@
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                @*<td>
                         <label> UserType</label>
                     </td>
                     <td>
@@ -47,7 +48,7 @@
                             <option value="Executive">Executive</option>
                         </select>
                     </td>*@
-                </table>
+                
                 <br />
                 <br />
                 <div class="form-group">

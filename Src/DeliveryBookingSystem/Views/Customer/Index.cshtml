@@ -4,12 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-<style>
-    body{
-        backgrou
-    }
-</style>
+<h1>Customers</h1>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -25,9 +20,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Password)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Age)
             </th>
@@ -82,15 +77,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IsVerified)
             </td>
-            <td>
+            @*<td>
                 <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
-            </td>
+            </td>*@
         </tr>
 }
     </tbody>
 </table>
 <div>
-    <a asp-action="login">Back</a>
+    <a asp-action="login">Login Page</a>
 </div>

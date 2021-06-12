@@ -24,9 +24,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Password)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Age)
             </th>
@@ -90,3 +90,6 @@
 }
     </tbody>
 </table>
+<div>
+    <a asp-action="AdminHomePage" asp-controller="Admin">Back</a>
+</div>

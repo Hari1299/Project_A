@@ -38,6 +38,8 @@ namespace DeliveryBookingSystem.Models
 
         [Required(ErrorMessage = "Pincode cannot be empty!!")]
         public int Pincode { get; set; }
+
+        [Display(Name = "Verified")]
         public string IsVerified { get; set; }
     
 }

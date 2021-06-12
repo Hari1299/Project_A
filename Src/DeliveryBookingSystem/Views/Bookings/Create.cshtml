@@ -5,7 +5,7 @@
    
 }
 
-<h1>Create</h1>
+<h1>Add Booking</h1>
 
 <h4>Booking</h4>
 <hr />
@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
+                <textarea asp-for="Address" class="form-control"></textarea>
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -80,7 +80,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Move to Index</a>
 </div>
 
 @section Scripts {
