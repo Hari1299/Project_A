@@ -58,14 +58,17 @@ namespace DeliveryBookingSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BookingId,CustomerId,ExecutiveId,DateTimeOfPickUp,WeightOfPackage,Address,City,PinCode,Phone,Price,DeliveryStatus")] Booking booking)
         {
+            
             if (ModelState.IsValid)
             {
                 booking.DeliveryStatus = "Requested";
+            //    ViewBag.bookings = dropdown();
                 _context.Add(booking);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("CustomerHome","Customer");
             }
             return View(booking);
+
         }
 
         // GET: Bookings/Edit/5
@@ -152,5 +155,14 @@ namespace DeliveryBookingSystem.Controllers
         {
             return _context.booking.Any(e => e.BookingId == id);
         }
+
+        //private List<DeliveryExecutive> dropdown()
+        //{
+        //    List<DeliveryExecutive> ddl = new List<DeliveryExecutive>();
+        //    ddl = (from i in _context.deliveryexecutive
+        //           select i).ToList();
+        //    return ddl;
+
+        //}
     }
 }

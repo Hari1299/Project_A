@@ -27,6 +27,7 @@ namespace DeliveryBookingSystem.Models
 
         [Required(ErrorMessage = "enter city")]
         public string City { get; set; }
+        [Display(Name ="Pincode")]
         [Required(ErrorMessage = "Pincode cannot be empty!!")]
         public int PinCode { get; set; }
 

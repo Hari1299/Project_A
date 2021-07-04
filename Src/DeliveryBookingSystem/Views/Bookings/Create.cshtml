@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
-   
+
 }
 
 <h1>Add Booking</h1>
@@ -10,8 +10,8 @@
 <h4>Booking</h4>
 <hr />
 <style>
-    body{
-        background-color:cadetblue;
+    body {
+        background-color: cadetblue;
     }
 </style>
 <div class="row">
@@ -25,6 +25,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="ExecutiveId" class="control-label"></label>
+                @*@Html.DropDownListFor(m => m.ExecutiveId,
+                    new SelectList(ViewBag.bookings, "ExecutiveId", "ExecutiveId"),
+                    new { @class = "form-control", })*@
                 <input asp-for="ExecutiveId" class="form-control" />
                 <span asp-validation-for="ExecutiveId" class="text-danger"></span>
             </div>
@@ -33,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="DateTimeOfPickUp" class="control-label"></label>
+                <label asp-for="DateTimeOfPickUp" class="control-label"></label><sup class="text-danger">&nbsp;*</sup>
                 <input asp-for="DateTimeOfPickUp" class="form-control" />
                 <span asp-validation-for="DateTimeOfPickUp" class="text-danger"></span>
             </div>
@@ -63,15 +66,15 @@
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>*@
             @*<div class="form-group">
-                <label asp-for="DeliveryStatus" class="control-label"></label>
-                <input asp-for="DeliveryStatus" class="form-control" />
-                <span asp-validation-for="DeliveryStatus" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="DeliveryStatus" class="control-label"></label>
+                    <input asp-for="DeliveryStatus" class="form-control" />
+                    <span asp-validation-for="DeliveryStatus" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -82,6 +85,45 @@
 <div>
     <a asp-action="Index">Move to Index</a>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>$("#submit").click(function () {
+            var customerid = $("#CustomerId").val();
+            var executiveid = $("ExecutiveId").val();
+            var dateandtimeofpickup = $("DateTimeOfPickup").val();
+            var weightofpackage = $("WeightOfPackage").val();
+            var deliveryaddress = $("Address").val();
+            var city = $("City").val();
+            var pincode = $("Pincode").val();
+            var phone = $("phone").val();
+            var price = $("Price").val();
+            if (customerid == '#CustomerId' && executiveid == '#ExecutiveId' && dateandtimeofpickup == '#DateTimeOfPickup' && weightofpackage == '#WeightOfPackage' && deliveryaddress == '#Address' && city == '#City' && pincode == '#Pincode' && phone == '#Phone ' && price == '#Price') {
+            /if (customerid == '' || executiveid == '' || dateandtimeofpickup == '' || weightofpackage == '' || deliveryaddress == '' || pickupaddress == '' || city == '' || pincode == '' || phone == '' || price == '') {/
+                swal({
+                    title: "Field Empty!!",
+                    text: "Please Check the missing field!!",
+                    icon: "warning",
+                    button: "OK",
+                });
+            } else {
+                swal({
+                    title: "Thank You!",
+                    text: "Your booking has been confirmed.",
+                    icon: "success",
+                });
+            }
+        })</script>
+<script>function calculate() {
+            var Kilogram = document.getElementById("Kilogram").value;
+            var PricePerGram = 50, price = 0;
+            price = (Kilogram * PricePerGram);
+            document.getElementById("Price").value = price;
+        };</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
